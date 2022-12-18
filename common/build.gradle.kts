@@ -4,6 +4,8 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    `maven-publish`
 }
 
 repositories {
@@ -20,4 +22,14 @@ dependencies {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "me.santio.utils"
+            artifactId = "common"
+            version = version
+        }
+    }
 }

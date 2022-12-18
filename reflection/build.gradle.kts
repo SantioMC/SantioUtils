@@ -4,6 +4,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    `maven-publish`
 }
 
 group = "me.santio.utils.reflection"
@@ -21,4 +22,14 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "me.santio.utils"
+            artifactId = "reflection"
+            version = version
+        }
+    }
 }
