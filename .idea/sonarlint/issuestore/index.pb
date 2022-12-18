@@ -1,7 +1,4 @@
 
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 t
 Dminecraft/src/main/kotlin/me/santio/utils/minecraft/MinecraftMath.kt,4\c\4c2612c519241fe1836596f469e6b6d812e00cb8
 C
