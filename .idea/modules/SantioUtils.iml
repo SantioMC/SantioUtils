@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/c" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/1" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/4/8" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/3" />
+      <excludeFolder url="file://$MODULE_DIR$/app" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/e" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/7/e" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a/f" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/5/f" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/8" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a/2" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/b" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/2" />
+    </content>
+  </component>
+</module>
