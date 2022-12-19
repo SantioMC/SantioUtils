@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.7.10"
@@ -26,6 +28,10 @@ tasks.named<Test>("test") {
 
 tasks.getByName("build") {
     dependsOn("shadowJar")
+}
+
+tasks.getByName<ShadowJar>("shadowJar") {
+    archiveClassifier.set("")
 }
 
 application {
