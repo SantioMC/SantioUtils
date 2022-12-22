@@ -4,7 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="582ef6f2-6a1b-46dc-8db0-d9f6771c4348" name="Changes" comment="Add maven-publishing plugin" />
+    <list default="true" id="582ef6f2-6a1b-46dc-8db0-d9f6771c4348" name="Changes" comment="Add maven-publishing plugin">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinScripting.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/4/54ee6fa32ca48b185325ad5e0b7584fdca5868fc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c9f1178831722e2137e0ea6d8e6cf58d3706abe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7da262e2c95433a93eed70179ee0ad6dfd191d8c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ea0daa849f7d401f44fc852c7909ed39eca064" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/CommandHandler.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/CommandInfo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/CustomCommandExecutor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/SubCommandInfo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/Variant.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/ArgumentAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/DoubleAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/FloatAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/IntAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/MaterialAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/OfflinePlayerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/PlayerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/adapter/impl/StringAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/annotation/Command.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/annotation/Optional.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/command/annotation/SubCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/BaseReflection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bukkit/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/bukkit/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/AttachedJavaPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/AttachedJavaPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/BukkitUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/BukkitUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/plugin/PluginUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bukkit/src/main/kotlin/me/santio/utils/bukkit/plugin/PluginUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minecraft/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/minecraft/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/Reflection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/Reflection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/ReflectionUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/ReflectionUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/ClassReflection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/ClassReflection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/FieldReflection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/FieldReflection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/MethodReflection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/reflection/src/main/kotlin/me/santio/utils/reflection/types/MethodReflection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,22 +64,233 @@
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/bukkit">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/minecraft">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SantioUtils" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SantioUtils" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SantioUtils" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SantioUtils" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Data Class" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
+        <option value="Class" />
+        <option value="Kotlin Annotation" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JBLsyYtVo9fSCQkb1obKCInq5M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "app.teamhub.trackedBranches": "1mvhlg/master",
+    "last_opened_file_path": "C:/Users/Santio/Documents/Code/Java/Plugins/Experiments",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="me.santio.utils.bukkit.command" />
+      <recent name="me.santio.utils.bukkit.command.annotation" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="me.santio.utils.bukkit.command.adapter.impl" />
+      <recent name="me.santio.utils.bukkit.command" />
+      <recent name="me.santio.utils.bukkit.command.annotation" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.SantioUtils [publish]">
+    <configuration name="SantioUtils [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SantioUtils [publishToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishToMavenLocal" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SantioUtils [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publish" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SantioUtils:minecraft [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/minecraft" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SantioUtils:minecraft [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/minecraft" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.SantioUtils:minecraft [build]" />
+      <item itemvalue="Gradle.SantioUtils:minecraft [clean]" />
+      <item itemvalue="Gradle.SantioUtils [build]" />
+      <item itemvalue="Gradle.SantioUtils [publishToMavenLocal]" />
+      <item itemvalue="Gradle.SantioUtils [publish]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.SantioUtils [publish]" />
+        <item itemvalue="Gradle.SantioUtils [publishToMavenLocal]" />
+        <item itemvalue="Gradle.SantioUtils [build]" />
+        <item itemvalue="Gradle.SantioUtils:minecraft [build]" />
+        <item itemvalue="Gradle.SantioUtils:minecraft [clean]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="582ef6f2-6a1b-46dc-8db0-d9f6771c4348" name="Changes" comment="Add maven-publishing plugin" />
+      <created>1671546745091</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671546745091</updated>
+      <workItem from="1671546746098" duration="15150000" />
+      <workItem from="1671639640139" duration="14666000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

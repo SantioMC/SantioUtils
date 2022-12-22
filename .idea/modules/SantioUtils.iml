@@ -4,18 +4,28 @@
     <content url="file://$MODULE_DIR$/../..">
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/c" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/1" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/4/8" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/3" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/7/6" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/7/b" />
       <excludeFolder url="file://$MODULE_DIR$/app" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/e" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/7/e" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/4/8" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/3" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a/f" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/5/f" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/8" />
-      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a/2" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/7/e" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/b" />
       <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/2" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/8" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/a/2" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/f" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/4/a" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/0/4" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/6" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/d/5" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/1" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/4/e" />
+      <excludeFolder url="file://$MODULE_DIR$/../sonarlint/issuestore/3/4" />
     </content>
   </component>
 </module>
