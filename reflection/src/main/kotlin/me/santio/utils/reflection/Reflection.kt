@@ -5,6 +5,7 @@ import me.santio.utils.reflection.types.ClassReflection
 import me.santio.utils.reflection.types.PackageReflection
 
 object Reflection {
+    @JvmStatic
     fun getClass(name: String): ClassReflection<*>? {
         return try {
             ClassReflection(Class.forName(name))
@@ -14,6 +15,7 @@ object Reflection {
     }
 
     @Suppress("DEPRECATION")
+    @JvmStatic
     fun getPackage(name: String): PackageReflection? {
         return try {
             PackageReflection(Package.getPackage(name))

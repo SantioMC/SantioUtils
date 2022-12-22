@@ -2,10 +2,10 @@ package me.santio.utils.reflection.types
 
 import java.lang.reflect.Field
 
-class FieldReflection(private val obj: Any, private val field: Field) {
+@Suppress("unused")
+class FieldReflection(private val obj: Any, private val field: Field) : BaseReflection<Field>(field) {
 
     fun name(): String = field.name
-    fun get(): Field = field
 
     @JvmOverloads
     fun value(obj: Any = this.obj): Any? {
@@ -20,27 +20,11 @@ class FieldReflection(private val obj: Any, private val field: Field) {
         try {
             field.isAccessible = true
             field.set(obj, value)
-        } catch(_: Exception) {}
+        } catch(_: Exception) { /* Ignore */ }
     }
 
     fun hasModifier(vararg modifiers: Int): Boolean {
         return modifiers.all { (field.modifiers and it) != 0 }
-    }
-    
-    fun hasAnnotation(annotation: Class<out Annotation>, direct: Boolean = true): Boolean {
-        return if (direct) {
-            field.declaredAnnotations.any { it.annotationClass == annotation }
-        } else {
-            field.annotations.any { it.annotationClass == annotation }
-        }
-    }
-
-    fun hasAnnotation(annotation: String, direct: Boolean = true): Boolean {
-        return if (direct) {
-            field.declaredAnnotations.any { it.annotationClass.java.name == annotation }
-        } else {
-            field.annotations.any { it.annotationClass.java.name == annotation }
-        }
     }
 
 }

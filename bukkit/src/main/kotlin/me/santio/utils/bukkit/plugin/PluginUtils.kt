@@ -4,6 +4,7 @@ import me.santio.utils.bukkit.plugin
 import me.santio.utils.reflection.reflection
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
+import org.bukkit.command.CommandMap
 import org.bukkit.command.PluginCommand
 import org.bukkit.command.SimpleCommandMap
 import org.bukkit.event.Event
@@ -18,19 +19,29 @@ import kotlin.io.path.name
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 object PluginUtils {
+    @JvmStatic
     fun getLoadedPlugins(): List<Plugin> {
         return Bukkit.getPluginManager().plugins.toList()
     }
 
+    @JvmStatic
     fun getLoadedPlugin(name: String): Plugin? {
-        return Bukkit.getPluginManager().getPlugin(name)
+        return getLoadedPlugins().firstOrNull { it.name.lowercase() == name.lowercase() }
     }
 
+    @JvmStatic
+    fun isLoaded(name: String): Boolean {
+        return getLoadedPlugins().any { it.name.lowercase() == name.lowercase() }
+    }
+
+    @JvmStatic
     fun getPluginDescription(file: File): PluginDescriptionFile {
         return plugin.pluginLoader.getPluginDescription(file)
     }
 
-    fun getPlugins(directory: String = "/plugins"): List<PluginInfo> {
+    @JvmStatic
+    @JvmOverloads
+    fun getPlugins(directory: String = plugin.dataFolder.parentFile.absolutePath): List<PluginInfo> {
         val folder = File(directory)
         val plugins = mutableListOf<PluginInfo>()
 
@@ -44,18 +55,22 @@ object PluginUtils {
         return plugins
     }
 
+    @JvmStatic
     fun getPlugin(name: String): PluginInfo? {
-        return getPlugins().firstOrNull { it.name == name || it.path.fileName.name == name }
+        return getPlugins().firstOrNull { it.name.lowercase() == name.lowercase() || it.path.fileName.name.lowercase() == name.lowercase() }
     }
 
+    @JvmStatic
     fun disablePlugin(plugin: Plugin) {
         Bukkit.getPluginManager().disablePlugin(plugin)
     }
 
+    @JvmStatic
     fun enablePlugin(name: String) {
         Bukkit.getPluginManager().enablePlugin(getLoadedPlugin(name)!!)
     }
 
+    @JvmStatic
     @Suppress("UNCHECKED_CAST")
     fun unloadPlugin(plugin: Plugin) {
         val listeners = Bukkit.getPluginManager()
@@ -63,13 +78,13 @@ object PluginUtils {
             .field("listeners")?.value()
                 as MutableMap<Event, SortedSet<RegisteredListener>>?
 
-        val commandMap = Bukkit.getPluginManager()
+        val commandMap = Bukkit.getServer()
             .reflection()
             .field("commandMap")!!.value()
                 as SimpleCommandMap
 
         val knownCommands = commandMap.reflection()
-            .field("knownCommands")!!.value()
+            .method("getKnownCommands")!!.invoke()
                 as MutableMap<String, Command>
 
         // Disable Plugin
@@ -112,6 +127,7 @@ object PluginUtils {
         System.gc()
     }
 
+    @JvmStatic
     fun loadPlugin(plugin: PluginInfo): Plugin? {
         return try {
             val pluginFile = plugin.path.toFile()
@@ -126,6 +142,7 @@ object PluginUtils {
         }
     }
 
+    @JvmStatic
     fun reloadPlugin(plugin: PluginInfo) {
         getLoadedPlugin(plugin.name)?.let {
             unloadPlugin(it)
@@ -133,6 +150,7 @@ object PluginUtils {
         loadPlugin(plugin)
     }
 
+    @JvmStatic
     fun reloadPlugin(plugin: Plugin) {
         unloadPlugin(plugin)
         loadPlugin(PluginInfo(plugin.dataFolder.toPath(), plugin.name, plugin.description.version, plugin.description))

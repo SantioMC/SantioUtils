@@ -7,7 +7,6 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-    `maven-publish`
 }
 
 group = "me.santio.utils.minecraft"
@@ -37,14 +36,4 @@ tasks.getByName<ShadowJar>("shadowJar") {
 
 application {
     mainClass.set("me.santio.utils.minecraft.MinecraftUtils")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "me.santio.utils"
-            artifactId = "minecraft"
-            version = version
-        }
-    }
 }

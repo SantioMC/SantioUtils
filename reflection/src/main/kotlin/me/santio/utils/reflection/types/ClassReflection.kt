@@ -1,26 +1,30 @@
 package me.santio.utils.reflection.types
 
 
-@Suppress("MemberVisibilityCanBePrivate")
-class ClassReflection<T>(private val clazz: Class<T>) {
+@Suppress("MemberVisibilityCanBePrivate", "UNCHECKED_CAST")
+class ClassReflection<T : Any>(private val obj: T): BaseReflection<T>(obj) {
 
-    fun name(): String = clazz.simpleName
-    fun get(): Class<T> = clazz
-    fun cast(obj: Any): T = clazz.cast(obj)
-    fun loader(): ClassLoader = clazz.classLoader
-    fun pack(): Package = clazz.`package`
+    fun name(): String = obj.javaClass.simpleName
+    fun cast(obj: Any): T = obj.javaClass.cast(obj) as T
+    fun loader(): ClassLoader = obj.javaClass.classLoader
+    fun pkg(): Package = obj.javaClass.`package`
 
     // Methods
     fun method(name: String): MethodReflection? {
         return try {
-            MethodReflection(clazz, clazz.javaClass.getDeclaredMethod(name))
+            MethodReflection(obj, obj.javaClass.getDeclaredMethod(name))
         } catch(e: Exception) {
             null
         }
     }
 
-    fun methods(): List<MethodReflection> {
-        return clazz.javaClass.declaredMethods.map { MethodReflection(clazz, it) }
+    @JvmOverloads
+    fun methods(direct: Boolean = true): List<MethodReflection> {
+        return if (direct) {
+            obj.javaClass.declaredMethods.map { MethodReflection(obj, it) }
+        } else {
+            obj.javaClass.methods.map { MethodReflection(obj, it) }
+        }
     }
 
     fun methodsWithAnnotation(annotation: Class<out Annotation>): List<MethodReflection> {
@@ -32,16 +36,25 @@ class ClassReflection<T>(private val clazz: Class<T>) {
     }
 
     // Fields
-    fun field(name: String): FieldReflection? {
+    @JvmOverloads
+    fun field(name: String, direct: Boolean = true): FieldReflection? {
         return try {
-            FieldReflection(clazz, clazz.javaClass.getDeclaredField(name))
+            FieldReflection(obj,
+                if (direct) obj.javaClass.getDeclaredField(name)
+                else obj.javaClass.getField(name)
+            )
         } catch(e: Exception) {
             null
         }
     }
 
-    fun fields(): List<FieldReflection> {
-        return clazz.javaClass.declaredFields.map { FieldReflection(clazz, it) }
+    @JvmOverloads
+    fun fields(direct: Boolean = true): List<FieldReflection> {
+        return if (direct) {
+            obj.javaClass.declaredFields.map { FieldReflection(obj, it) }
+        } else {
+            obj.javaClass.fields.map { FieldReflection(obj, it) }
+        }
     }
 
     fun fieldsWithAnnotation(annotation: Class<out Annotation>): List<FieldReflection> {
@@ -53,23 +66,7 @@ class ClassReflection<T>(private val clazz: Class<T>) {
     }
 
     fun hasModifier(vararg modifiers: Int): Boolean {
-        return modifiers.all { (clazz.modifiers and it) != 0 }
-    }
-    
-    fun hasAnnotation(annotation: Class<out Annotation>, direct: Boolean = true): Boolean {
-        return if (direct) {
-            clazz.declaredAnnotations.any { it.annotationClass == annotation }
-        } else {
-            clazz.annotations.any { it.annotationClass == annotation }
-        }
-    }
-
-    fun hasAnnotation(annotation: String, direct: Boolean = true): Boolean {
-        return if (direct) {
-            clazz.declaredAnnotations.any { it.annotationClass.java.name == annotation }
-        } else {
-            clazz.annotations.any { it.annotationClass.java.name == annotation }
-        }
+        return modifiers.all { (obj.javaClass.modifiers and it) != 0 }
     }
 
 }

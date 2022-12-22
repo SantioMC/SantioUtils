@@ -6,8 +6,6 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     // Apply the application plugin to add support for building a CLI application in Java.
     application
-
-    `maven-publish`
 }
 
 repositories {
@@ -36,14 +34,4 @@ tasks.getByName<ShadowJar>("shadowJar") {
 
 application {
     mainClass.set("me.santio.utils.SantioUtils")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "me.santio.utils"
-            artifactId = "common"
-            version = version
-        }
-    }
 }

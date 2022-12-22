@@ -1,40 +1,35 @@
 package me.santio.utils.bukkit;
 
-import me.santio.utils.bukkit.features.BukkitFeature;
-import me.santio.utils.bukkit.impl.MessageUtils;
-import me.santio.utils.bukkit.inventory.item.CustomItem;
-import me.santio.utils.bukkit.inventory.menu.Slots;
-import me.santio.utils.bukkit.inventory.menu.menus.VirtualMenu;
-import me.santio.utils.minecraft.message.Message;
-import me.santio.utils.reflection.Reflection;
-import me.santio.utils.reflection.ReflectionUtils;
-import org.bukkit.Material;
+import me.santio.utils.bukkit.command.Variant;
+import me.santio.utils.bukkit.command.annotation.Command;
+import me.santio.utils.bukkit.command.annotation.SubCommand;
 import org.bukkit.entity.Player;
 
 public class Test extends AttachedJavaPlugin {
     
     @Override
     public void onEnable() {
-        this.enableFeature(BukkitFeature.INVENTORY);
+        loadCommands();
     }
     
-    public void openInventory(Player player) {
-        VirtualMenu menu = new VirtualMenu(3, "Idek")
-            .setSlots(Slots.ALL(), new CustomItem(Material.GRAY_STAINED_GLASS_PANE, " "))
-            .setSlot(13, new CustomItem(Material.DIAMOND, "Diamond"), (event) -> {
-                event.setCancelled(true);
-                player.getInventory().addItem(new CustomItem(Material.DIAMOND, "Diamond"));
-            })
-            .open(player);
+    @Command
+    public static class TestCommand {
         
-        menu.simulateClick(player, 13);
-    }
-    
-    public void sendMessage(Player player) {
-        MessageUtils.send(
-    new Message("&aHello ")
-                .add(new Message("world!").hover("&aHover!").command("&aClick!"))
-        , player);
+        @SubCommand(variant = Variant.MAIN)
+        public void main(Player sender) {
+            sender.sendMessage("Hello World!");
+        }
+        
+        @SubCommand(variant = Variant.HELP_AND_FALLBACK)
+        public void help(Player sender) {
+            sender.sendMessage("Help!");
+        }
+        
+        @SubCommand // Command: /test bob
+        public void bob(Player sender, int num) {
+            sender.sendMessage("Hello Bob! Number: " + num);
+        }
+        
     }
     
 }
