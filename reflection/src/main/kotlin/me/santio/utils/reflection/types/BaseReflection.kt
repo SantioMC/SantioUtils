@@ -1,5 +1,10 @@
 package me.santio.utils.reflection.types
 
+import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
+import java.lang.reflect.TypeVariable
+
+@Suppress("MemberVisibilityCanBePrivate")
 abstract class BaseReflection<T : Any>(private val obj: T) {
 
     fun get(): T {
@@ -46,6 +51,45 @@ abstract class BaseReflection<T : Any>(private val obj: T) {
         } else {
             obj.javaClass.annotations.any { it.annotationClass.java.name == annotation }
         }
+    }
+
+    fun generics(): Map<Char, Type> {
+        val map = mutableMapOf<Char, Type>()
+
+        val superclassType = obj.javaClass.genericSuperclass
+
+        if (superclassType is ParameterizedType) {
+            val typeParameters: Array<out TypeVariable<Class<T>>> = obj.javaClass.typeParameters
+            val typeArguments: Array<Type> = superclassType.actualTypeArguments
+            for (i in typeParameters.indices) {
+                val typeParameterName = typeParameters[i].name
+                val typeArgument: Type = typeArguments[i]
+                map[typeParameterName.first()] = typeArgument
+            }
+        }
+
+        return map
+    }
+
+    fun generic(generic: Char): Type? {
+        return generics()[generic]
+    }
+
+    fun bounds(): Map<Char, Type> {
+        val map = mutableMapOf<Char, Type>()
+        val typeParameters: Array<out TypeVariable<Class<T>>> = obj.javaClass.typeParameters
+
+        for (i in typeParameters.indices) {
+            val typeParameterName = typeParameters[i].name
+            val bounds = typeParameters[i].bounds
+            if (bounds.isNotEmpty()) map[typeParameterName.first()] = bounds[0]
+        }
+
+        return map
+    }
+
+    fun bound(generic: Char): Type? {
+        return bounds()[generic]
     }
 
 }

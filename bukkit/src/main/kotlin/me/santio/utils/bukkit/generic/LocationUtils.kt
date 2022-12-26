@@ -1,4 +1,6 @@
 @file:JvmName("LocationUtils")
+@file:Suppress("unused")
+
 package me.santio.utils.bukkit.generic
 
 import org.bukkit.Chunk
@@ -20,4 +22,10 @@ fun Location.getChunks(radius: Int = 2): Set<Chunk> {
     chunks.add(this.clone().add(0.0, 0.0, -radius.toDouble()).chunk)
 
     return chunks
+}
+
+fun Location.horizontalDistance(location: Location): Double {
+    val distX = this.x - location.x
+    val distZ = this.z - location.z
+    return (distX * distX) + (distZ * distZ)
 }
