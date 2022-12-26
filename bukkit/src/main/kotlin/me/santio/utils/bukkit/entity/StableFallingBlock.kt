@@ -1,6 +1,6 @@
 package me.santio.hssi.utils
 
-import me.santio.utils.template.AttachedJavaPlugin
+import me.santio.utils.bukkit.generic.timer
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.block.data.BlockData
@@ -52,7 +52,7 @@ class StableFallingBlock {
         if (velocity == null) return this
 
         var processed = 0
-        AttachedJavaPlugin.scheduler!!.timer({
+        timer({
             if (entity == null || !entity!!.isValid || this.velocity != velocity) it.cancel()
             else {
                 processed++
@@ -91,7 +91,7 @@ class StableFallingBlock {
         spawnBlock(location)
 
         if (gravity) {
-            AttachedJavaPlugin.scheduler!!.timer({ task ->
+            timer({ task ->
                 if (entity == null || !entity!!.isValid) task.cancel() else {
                     val loc = entity!!.location
                     val y = loc.y
@@ -116,7 +116,7 @@ class StableFallingBlock {
                 it.setGravity(gravity)
             }
 
-            AttachedJavaPlugin.scheduler!!.timer({
+            timer({
                 if (entity == null || marker == null || !entity!!.isValid || !marker!!.isValid) it.cancel()
                 else spawnBlock(marker!!.location)
             }, -1, 1)
