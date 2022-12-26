@@ -1,4 +1,4 @@
-package me.santio.hssi.utils
+package me.santio.utils.bukkit.entity
 
 import me.santio.utils.bukkit.generic.timer
 import org.bukkit.Location
