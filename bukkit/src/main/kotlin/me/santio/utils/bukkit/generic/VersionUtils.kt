@@ -70,10 +70,32 @@ enum class PlayerVersion(val protocol: Int, val version: String) {
     v1_19_3(761, "1.19.3"),
     UNKNOWN(-1, "UNKNOWN");
 
+    fun isOlderThan(version: PlayerVersion): Boolean {
+        return this.protocol < version.protocol
+    }
+
+    fun isNewerThan(version: PlayerVersion): Boolean {
+        return this.protocol > version.protocol
+    }
+
+    fun name(): String {
+        val latest = PlayerVersion.values().maxByOrNull { it.protocol }!!
+
+        if (this == UNKNOWN) return latest.version
+        return this.version
+    }
 
     companion object {
         fun getVersion(protocol: Int): PlayerVersion {
             return values().firstOrNull { v -> v.protocol == protocol } ?: UNKNOWN
+        }
+
+        fun isOlderThan(version: PlayerVersion, check: PlayerVersion): Boolean {
+            return version.isOlderThan(check)
+        }
+
+        fun isNewerThan(version: PlayerVersion, check: PlayerVersion): Boolean {
+            return version.isNewerThan(check)
         }
     }
 }
