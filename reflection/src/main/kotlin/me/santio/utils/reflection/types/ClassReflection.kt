@@ -1,13 +1,15 @@
 package me.santio.utils.reflection.types
 
+import me.santio.utils.reflection.reflection
 
-@Suppress("MemberVisibilityCanBePrivate", "UNCHECKED_CAST")
+
+@Suppress("MemberVisibilityCanBePrivate", "UNCHECKED_CAST", "unused")
 class ClassReflection<T : Any>(private val obj: T): BaseReflection<T>(obj) {
 
     fun name(): String = obj.javaClass.simpleName
     fun cast(obj: Any): T = obj.javaClass.cast(obj) as T
     fun loader(): ClassLoader = obj.javaClass.classLoader
-    fun pkg(): Package = obj.javaClass.`package`
+    fun pkg(): PackageReflection = obj.javaClass.`package`.reflection()
 
     // Methods
     fun method(name: String): MethodReflection? {
