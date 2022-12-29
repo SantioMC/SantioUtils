@@ -2,7 +2,6 @@ package me.santio.utils.bukkit
 
 import me.santio.utils.bukkit.command.CommandHandler
 import me.santio.utils.bukkit.features.BukkitFeature
-import me.santio.utils.bukkit.generic.AsyncUtils
 import me.santio.utils.reflection.reflection
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -23,8 +22,6 @@ private lateinit var pluginInstance: AttachedJavaPlugin
 @Suppress("unused")
 abstract class AttachedJavaPlugin: JavaPlugin() {
 
-    lateinit var sync: AsyncUtils
-
     /**
      * This method is called when the plugin is loaded.
      * This is the equivalent of the onLoad method in JavaPlugin.
@@ -33,7 +30,6 @@ abstract class AttachedJavaPlugin: JavaPlugin() {
 
     final override fun onLoad() {
         pluginInstance = this
-        sync = AsyncUtils(this)
         onPluginLoad()
     }
 

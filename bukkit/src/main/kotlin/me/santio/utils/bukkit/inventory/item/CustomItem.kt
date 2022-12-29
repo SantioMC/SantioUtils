@@ -1,5 +1,6 @@
 package me.santio.utils.bukkit.inventory.item
 
+import me.santio.utils.bukkit.generic.async
 import me.santio.utils.bukkit.generic.normalcase
 import me.santio.utils.bukkit.plugin
 import org.bukkit.Bukkit
@@ -103,7 +104,7 @@ class CustomItem(material: Material): ItemStack(material) {
     fun skullAsync(name: String): CustomItem {
         if (!isValid() || meta !is SkullMeta) return this
         val skullMeta = meta as SkullMeta
-        plugin.sync.async {
+        async {
             skullMeta.owningPlayer = Bukkit.getOfflinePlayer(name)
             this.itemMeta = skullMeta
         }

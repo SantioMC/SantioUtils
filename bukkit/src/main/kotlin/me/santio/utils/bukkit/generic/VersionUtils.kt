@@ -23,7 +23,7 @@ object VersionUtils {
 
 }
 
-@Suppress("EnumEntryName")
+@Suppress("EnumEntryName", "unused")
 enum class PlayerVersion(val protocol: Int, val version: String) {
     v1_4_6(51, "1.4.6/7"),
     v1_5_1(60, "1.5.1"),
@@ -78,7 +78,7 @@ enum class PlayerVersion(val protocol: Int, val version: String) {
         return this.protocol > version.protocol
     }
 
-    fun name(): String {
+    fun actualName(): String {
         val latest = PlayerVersion.values().maxByOrNull { it.protocol }!!
 
         if (this == UNKNOWN) return latest.version
@@ -86,14 +86,17 @@ enum class PlayerVersion(val protocol: Int, val version: String) {
     }
 
     companion object {
+        @JvmStatic
         fun getVersion(protocol: Int): PlayerVersion {
             return values().firstOrNull { v -> v.protocol == protocol } ?: UNKNOWN
         }
 
+        @JvmStatic
         fun isOlderThan(version: PlayerVersion, check: PlayerVersion): Boolean {
             return version.isOlderThan(check)
         }
 
+        @JvmStatic
         fun isNewerThan(version: PlayerVersion, check: PlayerVersion): Boolean {
             return version.isNewerThan(check)
         }
