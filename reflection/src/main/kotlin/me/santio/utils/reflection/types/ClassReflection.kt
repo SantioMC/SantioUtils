@@ -12,10 +12,14 @@ class ClassReflection<T : Any>(private val obj: T): BaseReflection<T>(obj) {
     fun pkg(): PackageReflection = obj.javaClass.`package`.reflection()
 
     // Methods
-    fun method(name: String): MethodReflection? {
+    fun method(name: String, direct: Boolean = true): MethodReflection? {
         return try {
-            MethodReflection(obj, obj.javaClass.getDeclaredMethod(name))
-        } catch(e: Exception) {
+            if (direct) {
+                obj.javaClass.getDeclaredMethod(name).reflection()
+            } else {
+                obj.javaClass.getMethod(name).reflection()
+            }
+        } catch (e: Exception) {
             null
         }
     }
@@ -69,6 +73,17 @@ class ClassReflection<T : Any>(private val obj: T): BaseReflection<T>(obj) {
 
     fun hasModifier(vararg modifiers: Int): Boolean {
         return modifiers.all { (obj.javaClass.modifiers and it) != 0 }
+    }
+
+    // Initialization
+    fun newInstance(vararg args: Any): T? {
+        return try {
+            val constructor = obj.javaClass.getDeclaredConstructor(*args.map { it.javaClass }.toTypedArray())
+            constructor.isAccessible = true
+            constructor.newInstance(*args)
+        } catch (e: Exception) {
+            null
+        }
     }
 
 }

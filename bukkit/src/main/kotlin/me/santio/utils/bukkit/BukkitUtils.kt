@@ -7,4 +7,7 @@ object BukkitUtils {
     @JvmStatic
     val featuresEnabled: MutableSet<BukkitFeature> = mutableSetOf()
 
+    @JvmStatic
+    var currentMapId = 0
+
 }

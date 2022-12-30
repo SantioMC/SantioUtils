@@ -15,18 +15,28 @@ fun Number.almostEquals(number: Number, sensitivity: Int = 5): Boolean {
     return abs(this.toDouble() - number) < 1 / 10.0.pow(sensitivity.toDouble())
 }
 
-private operator fun Number.minus(number: Number): Double {
+fun Double.almostEquals(number: Number, sensitivity: Int = 5): Boolean {
+    return abs(this - number.toDouble()) < 1 / 10.0.pow(sensitivity.toDouble())
+}
+
+operator fun Number.minus(number: Number): Double {
     return this.toDouble() - number
 }
 
-private operator fun Number.div(number: Number): Double {
+operator fun Number.div(number: Number): Double {
     return this.toDouble() / number
 }
 
-private operator fun Number.times(number: Number): Double {
+operator fun Number.times(number: Number): Double {
     return this.toDouble() * number
 }
 
-private operator fun Number.plus(number: Number): Double {
+operator fun Number.plus(number: Number): Double {
     return this.toDouble() + number
 }
+
+fun Number.normalize() = this.toDouble() / abs(this.toDouble())
+fun Double.normalize() = this / abs(this)
+fun Int.normalize() = this / abs(this)
+fun Long.normalize() = this / abs(this)
+fun Float.normalize() = this / abs(this)

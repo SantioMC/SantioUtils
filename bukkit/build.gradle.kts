@@ -23,6 +23,7 @@ dependencies {
 
     implementation(project(mapOf("path" to ":minecraft")))
     implementation(project(mapOf("path" to ":reflection")))
+    implementation(project(mapOf("path" to ":common")))
 }
 
 tasks.getByName<Test>("test") {

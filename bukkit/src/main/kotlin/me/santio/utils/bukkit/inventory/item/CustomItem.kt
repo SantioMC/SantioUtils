@@ -2,16 +2,13 @@ package me.santio.utils.bukkit.inventory.item
 
 import me.santio.utils.bukkit.generic.async
 import me.santio.utils.bukkit.generic.normalcase
-import me.santio.utils.bukkit.plugin
 import org.bukkit.Bukkit
 import org.bukkit.Color
 import org.bukkit.Material
 import org.bukkit.OfflinePlayer
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.meta.ItemMeta
-import org.bukkit.inventory.meta.LeatherArmorMeta
-import org.bukkit.inventory.meta.PotionMeta
-import org.bukkit.inventory.meta.SkullMeta
+import org.bukkit.inventory.meta.*
+import org.bukkit.map.MapView
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class CustomItem(material: Material): ItemStack(material) {
@@ -43,6 +40,19 @@ class CustomItem(material: Material): ItemStack(material) {
         @JvmName("book")
         @JvmStatic
         fun book(): Book = Book()
+
+        @Suppress("DEPRECATION")
+        @JvmName("map")
+        @JvmStatic
+        fun map(id: Int): CustomItem {
+            return CustomItem(Material.FILLED_MAP).map(Bukkit.getMap(id)!!)
+        }
+
+        @JvmName("map")
+        @JvmStatic
+        fun map(map: MapView): CustomItem {
+            return CustomItem(Material.FILLED_MAP).map(map)
+        }
     }
 
     override fun setItemMeta(itemMeta: ItemMeta?): Boolean {
@@ -116,6 +126,14 @@ class CustomItem(material: Material): ItemStack(material) {
         val skullMeta = meta as SkullMeta
         skullMeta.owningPlayer = player
         this.itemMeta = skullMeta
+        return this
+    }
+
+    fun map(view: MapView): CustomItem {
+        if (!isValid() || meta !is MapMeta) return this
+        val mapMeta = meta as MapMeta
+        mapMeta.mapView = view
+        this.itemMeta = mapMeta
         return this
     }
 
