@@ -17,8 +17,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":common")))
-    implementation(project(mapOf("path" to ":reflection")))
+    implementation(project(":common"))
+    implementation(project(":reflection"))
 
     implementation("com.konghq:unirest-java:3.11.09")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
