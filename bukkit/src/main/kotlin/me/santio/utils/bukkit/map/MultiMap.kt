@@ -1,6 +1,9 @@
 package me.santio.utils.bukkit.map
 
-import me.santio.utils.bukkit.generic.*
+import me.santio.utils.bukkit.generic.MapUtils
+import me.santio.utils.bukkit.generic.attachEntity
+import me.santio.utils.bukkit.generic.blocks
+import me.santio.utils.bukkit.generic.frame
 import org.bukkit.Location
 import org.bukkit.block.BlockFace
 import org.bukkit.entity.GlowItemFrame
@@ -11,9 +14,8 @@ class MultiMap {
 
     private val matrix: MutableList<MutableList<CustomMap>> = mutableListOf()
 
-    fun generate(topLeft: Location, bottomRight: Location) {
+    fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace) {
         val blocks = topLeft to bottomRight blocks topLeft.world
-        val direction: BlockFace = blocks.facing()
 
         blocks.forEach { block ->
             val x = if (direction == BlockFace.NORTH || direction == BlockFace.SOUTH) abs(block.x - topLeft.x) .toInt()

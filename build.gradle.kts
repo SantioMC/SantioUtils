@@ -21,15 +21,5 @@ subprojects {
                 from(components["java"])
             }
         }
-
-        repositories {
-            maven {
-                url = uri("https://repo.repsy.io/mvn/santio/santioutils")
-                credentials {
-                    username = project.property("repsyUsername") as String
-                    password = project.property("repsyPassword") as String
-                }
-            }
-        }
     }
 }

@@ -44,14 +44,14 @@ class CustomItem(material: Material): ItemStack(material) {
         @Suppress("DEPRECATION")
         @JvmName("map")
         @JvmStatic
-        fun map(id: Int): CustomItem {
-            return CustomItem(Material.FILLED_MAP).map(Bukkit.getMap(id)!!)
+        fun map(id: Int, name: String? = null): CustomItem {
+            return CustomItem(Material.FILLED_MAP, name).map(Bukkit.getMap(id)!!)
         }
 
         @JvmName("map")
         @JvmStatic
-        fun map(map: MapView): CustomItem {
-            return CustomItem(Material.FILLED_MAP).map(map)
+        fun map(map: MapView, name: String? = null): CustomItem {
+            return CustomItem(Material.FILLED_MAP, name).map(map)
         }
     }
 

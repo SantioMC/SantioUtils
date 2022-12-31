@@ -21,9 +21,9 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
     compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
 
+    implementation(project(mapOf("path" to ":common")))
     implementation(project(mapOf("path" to ":minecraft")))
     implementation(project(mapOf("path" to ":reflection")))
-    implementation(project(mapOf("path" to ":common")))
 }
 
 tasks.getByName<Test>("test") {

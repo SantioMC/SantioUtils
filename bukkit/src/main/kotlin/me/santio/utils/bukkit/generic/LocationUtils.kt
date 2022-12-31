@@ -3,13 +3,11 @@
 
 package me.santio.utils.bukkit.generic
 
-import me.santio.utils.kotlin.normalize
 import org.bukkit.Bukkit
 import org.bukkit.Chunk
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.block.Block
-import org.bukkit.block.BlockFace
 import org.bukkit.entity.Entity
 import org.bukkit.entity.ItemFrame
 import java.util.function.Predicate
@@ -39,22 +37,21 @@ fun Location.horizontalDistance(location: Location): Double {
 fun Pair<Location, Location>.locations(): List<Location> {
     val locs: MutableList<Location> = mutableListOf()
 
-    var x = this.first.x
     var y = this.first.y
-    var z = this.first.z
-
     while (y != this.second.y) {
+        var x = this.first.x
         while (x != this.second.x) {
+            var z = this.first.z
             while (z != this.second.z) {
-                locs.add(Location(this.first.world, x, y, z))
-                z += (this.first.z - this.second.z).normalize()
+                locs += Location(this.first.world, x, y, z)
+                z += if (this.first.z < this.second.z) 1.0 else -1.0
             }
-            x += (this.first.x - this.second.x).normalize()
+            x += if (this.first.x < this.second.x) 1.0 else -1.0
         }
-        y += (this.first.y - this.second.y).normalize()
+        y += if (this.first.y < this.second.y) 1.0 else -1.0
     }
 
-    return locs
+    return locs.sortedWith(compareBy({ it.y }, { it.x }, { it.z }))
 }
 
 infix fun Pair<Location, Location>.blocks(world: World?): List<Block> {
@@ -69,23 +66,4 @@ fun Block.frame(): ItemFrame? {
             it is ItemFrame && it.block() == this
         }
         .firstOrNull() as ItemFrame?
-}
-
-fun Iterable<Block>.facing(): BlockFace {
-    val topLeft = this.first()
-    val bottomRight = this.last()
-
-    return if (topLeft.x < bottomRight.x) {
-        if (topLeft.z < bottomRight.z) {
-            BlockFace.NORTH
-        } else {
-            BlockFace.EAST
-        }
-    } else {
-        if (topLeft.z < bottomRight.z) {
-            BlockFace.WEST
-        } else {
-            BlockFace.SOUTH
-        }
-    }
 }
