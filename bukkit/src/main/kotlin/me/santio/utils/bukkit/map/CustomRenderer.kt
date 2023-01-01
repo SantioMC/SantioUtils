@@ -16,6 +16,8 @@ class CustomRenderer : MapRenderer() {
     override fun render(map: MapView, canvas: MapCanvas, player: Player) {
         if (this.canvas == null) this.canvas = canvas
         if (this.map == null) this.map = map
+
+        this.canvas!!.drawText(0, 0, MinecraftFont.Font, "Rendered")
     }
 
     fun rect(x1: Int, z1: Int, x2: Int, z2: Int, color: Byte) {
