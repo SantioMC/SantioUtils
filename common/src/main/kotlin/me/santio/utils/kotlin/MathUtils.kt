@@ -1,8 +1,10 @@
 @file:JvmName("MathUtils")
+@file:Suppress("unused")
 
 package me.santio.utils.kotlin
 
 import kotlin.math.abs
+import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.pow
 
@@ -17,6 +19,22 @@ fun Number.almostEquals(number: Number, sensitivity: Int = 5): Boolean {
 
 fun Double.almostEquals(number: Number, sensitivity: Int = 5): Boolean {
     return abs(this - number.toDouble()) < 1 / 10.0.pow(sensitivity.toDouble())
+}
+
+fun Double.floorToInt(): Int {
+    return floor(this).toInt()
+}
+
+fun Double.ceilToInt(): Int {
+    return ceil(this).toInt()
+}
+
+fun Float.floorToInt(): Int {
+    return floor(this).toInt()
+}
+
+fun Float.ceilToInt(): Int {
+    return ceil(this).toInt()
 }
 
 operator fun Number.minus(number: Number): Double {
