@@ -9,6 +9,6 @@ data class Pixel(
         map.renderer.setPixel(1, coordinates.first, coordinates.second, color)
     }
 
-    fun get() = map.renderer.canvas.getPixel(coordinates.first, coordinates.second)
+    fun get(): Byte? = map.renderer.canvas?.getPixel(coordinates.first, coordinates.second)
 
 }
