@@ -12,7 +12,7 @@ import kotlin.math.abs
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class MultiMap {
 
-    private val matrix: MutableList<MutableList<CustomMap?>> = mutableListOf()
+    val maps = mutableListOf<PartMap>()
 
     fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace): MultiMap {
         val blocks = topLeft to bottomRight blocks topLeft.world
@@ -26,16 +26,14 @@ class MultiMap {
             val map = CustomMap()
             itemFrame.setItem(map.item())
 
-            if (matrix.size <= x) matrix.add(mutableListOf<CustomMap?>().apply { repeat(y) { add(null) } })
-            matrix[x][y] = map
+            maps.add(PartMap(map, x, y))
         }
 
         return this
     }
 
-    fun maps(): List<List<CustomMap>>? {
-        if (matrix.flatten().any { it == null }) return null
-        return matrix.map { it.map { m -> m!! } }
+    fun maps(): List<PartMap>? {
+        return if (maps.isEmpty()) null else maps
     }
 
     fun getPixel(x: Int, y: Int): Pixel? {
@@ -46,8 +44,8 @@ class MultiMap {
         val pixelX = x % 128
         val pixelY = y % 128
 
-        if (maps.size <= mapX || maps[mapX].size <= mapY) return null
-        return Pixel(maps[mapX][mapY], pixelX to pixelY)
+        val map = maps.firstOrNull { it.x == mapX && it.y == mapY } ?: return null
+        return Pixel(map.map, pixelX to pixelY)
     }
 
     fun sphere(center: Pixel, radius: Int): List<Pixel> {
@@ -82,9 +80,9 @@ class MultiMap {
     fun number(): MultiMap {
         val maps = maps() ?: return this
 
-        for ((index, map) in maps.flatten().withIndex()) {
-            map.renderer.border(MapUtils.randomColor())
-            map.renderer.centerText("$index")
+        for ((index, part) in maps.withIndex()) {
+            part.map.renderer.border(MapUtils.randomColor())
+            part.map.renderer.centerText("$index")
         }
 
         return this
