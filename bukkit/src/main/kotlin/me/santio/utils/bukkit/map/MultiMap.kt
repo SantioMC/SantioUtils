@@ -14,7 +14,7 @@ class MultiMap {
 
     private val matrix: MutableList<MutableList<CustomMap>> = mutableListOf()
 
-    fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace) {
+    fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace): MultiMap {
         val blocks = topLeft to bottomRight blocks topLeft.world
 
         blocks.forEach { block ->
@@ -30,6 +30,8 @@ class MultiMap {
             if (matrix.size <= x) matrix.add(mutableListOf())
             matrix[x].add(map)
         }
+
+        return this
     }
 
     fun getPixel(x: Int, y: Int): Pixel {
@@ -68,11 +70,12 @@ class MultiMap {
         return pixels
     }
 
-    fun number() {
+    fun number(): MultiMap {
         for ((index, map) in matrix.flatten().withIndex()) {
             map.renderer.border(MapUtils.randomColor())
             map.renderer.centerText("$index")
         }
+        return this
     }
 
 }
