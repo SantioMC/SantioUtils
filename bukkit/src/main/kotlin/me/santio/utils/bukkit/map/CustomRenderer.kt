@@ -3,10 +3,12 @@ package me.santio.utils.bukkit.map
 import org.bukkit.entity.Player
 import org.bukkit.map.*
 import java.awt.Image
+import java.util.function.Consumer
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class CustomRenderer : MapRenderer() {
 
+    private var onRenders: MutableList<Consumer<CustomRenderer>> = mutableListOf()
     var canvas: MapCanvas? = null
     var map: MapView? = null
 
@@ -16,6 +18,13 @@ class CustomRenderer : MapRenderer() {
     override fun render(map: MapView, canvas: MapCanvas, player: Player) {
         if (this.canvas == null) this.canvas = canvas
         if (this.map == null) this.map = map
+
+        onRenders.forEach { it.accept(this) }
+        onRenders.clear()
+    }
+
+    fun onRender(callback: Consumer<CustomRenderer>) {
+        onRenders.add(callback)
     }
 
     fun rect(x1: Int, z1: Int, x2: Int, z2: Int, color: Byte) {

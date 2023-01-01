@@ -36,9 +36,13 @@ class MultiMap {
             maps.add(PartMap(map, x, y))
         }
 
-        delay({
-            callback?.accept(this)
-        }, 20)
+        var waitingFor = maps.size
+        maps.forEach { partMap ->
+            partMap.map.renderer.onRender {
+                waitingFor--
+                if (waitingFor == 0) callback?.accept(this)
+            }
+        }
 
         return this
     }
