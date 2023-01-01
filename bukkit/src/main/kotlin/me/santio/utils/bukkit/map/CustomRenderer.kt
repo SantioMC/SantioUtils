@@ -7,21 +7,21 @@ import java.awt.Image
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class CustomRenderer : MapRenderer() {
 
-    lateinit var canvas: MapCanvas
-    lateinit var map: MapView
+    var canvas: MapCanvas? = null
+    var map: MapView? = null
 
     val maxX = 128
     val maxZ = 128
 
     override fun render(map: MapView, canvas: MapCanvas, player: Player) {
-        if (!this::canvas.isInitialized) this.canvas = canvas
-        if (!this::map.isInitialized) this.map = map
+        if (this.canvas == null) this.canvas = canvas
+        if (this.map == null) this.map = map
     }
 
     fun rect(x1: Int, z1: Int, x2: Int, z2: Int, color: Byte) {
         for (x in x1 until x2) {
             for (z in z1 until z2) {
-                canvas.setPixel(x, z, color)
+                canvas?.setPixel(x, z, color)
             }
         }
     }
@@ -40,7 +40,7 @@ class CustomRenderer : MapRenderer() {
 
     @Suppress("DEPRECATION")
     fun text(x: Int, y: Int, text: String) {
-        canvas.drawText(50, 50, MinecraftFont.Font, text)
+        canvas?.drawText(x, y, MinecraftFont.Font, text)
     }
 
     fun centerText(text: String) {
@@ -52,7 +52,7 @@ class CustomRenderer : MapRenderer() {
         for (i in lines.indices) {
             val line = lines[i]
             val x = (maxX - line.length * 4) / 2
-            canvas.drawText(x, y + i * lineHeight, MinecraftFont.Font, line)
+            text(x, y + i * lineHeight, line)
         }
     }
 
@@ -66,7 +66,7 @@ class CustomRenderer : MapRenderer() {
     }
 
     fun setImage(image: Image) {
-        canvas.drawImage(0, 0, image)
+        canvas?.drawImage(0, 0, image)
     }
 
 }
