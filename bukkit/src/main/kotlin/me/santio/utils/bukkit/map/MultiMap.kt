@@ -14,14 +14,14 @@ class MultiMap {
 
     @JvmOverloads
     fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace, callback: Consumer<MultiMap>? = null): MultiMap {
-        val locations = (topLeft to bottomRight).locations()
+        var locations = (topLeft to bottomRight).locations()
 
-        when(direction) {
-            BlockFace.NORTH -> locations.sortedWith(compareBy({ -it.y }, { -it.x }, { it.z }))
-            BlockFace.SOUTH -> locations.sortedWith(compareBy({ -it.y }, { it.x }, { it.z }))
-            BlockFace.EAST -> locations.sortedWith(compareBy({ -it.y }, { it.z }, { it.x }))
-            BlockFace.WEST -> locations.sortedWith(compareBy({ -it.y }, { -it.z }, { it.x }))
-            else -> {/* do nothing */}
+        locations = when(direction) {
+            BlockFace.NORTH -> locations.sortedWith(compareBy({ it.y }, { it.x }, { it.z })).reversed()
+            BlockFace.SOUTH -> locations.sortedWith(compareBy({ it.y }, { -it.x }, { -it.z })).reversed()
+            BlockFace.EAST -> locations.sortedWith(compareBy({ it.y }, { it.z }, { it.x })).reversed()
+            BlockFace.WEST -> locations.sortedWith(compareBy({ it.y }, { -it.z }, { -it.x })).reversed()
+            else -> locations
         }
 
         locations.blocks(topLeft.world).forEach { block ->
