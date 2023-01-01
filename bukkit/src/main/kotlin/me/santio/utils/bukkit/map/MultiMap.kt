@@ -25,7 +25,10 @@ class MultiMap {
             val itemFrame = block.frame() ?: block.attachEntity(GlowItemFrame::class.java, direction)
             val map = CustomMap()
             itemFrame.setItem(map.item())
-            matrix[x][y] = map
+
+            // Add to matrix, the first index being the x and the second the y
+            if (matrix.size <= x) matrix.add(mutableListOf())
+            matrix[x].add(map)
         }
     }
 
