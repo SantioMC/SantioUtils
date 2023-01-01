@@ -1,12 +1,10 @@
 package me.santio.utils.bukkit.map
 
-import me.santio.utils.bukkit.generic.MapUtils
-import me.santio.utils.bukkit.generic.attachEntity
-import me.santio.utils.bukkit.generic.blocks
-import me.santio.utils.bukkit.generic.frame
+import me.santio.utils.bukkit.generic.*
 import org.bukkit.Location
 import org.bukkit.block.BlockFace
 import org.bukkit.entity.GlowItemFrame
+import java.util.function.Consumer
 import kotlin.math.abs
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
@@ -14,7 +12,8 @@ class MultiMap {
 
     val maps = mutableListOf<PartMap>()
 
-    fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace): MultiMap {
+    @JvmOverloads
+    fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace, callback: Consumer<MultiMap>? = null): MultiMap {
         val blocks = topLeft to bottomRight blocks topLeft.world
 
         blocks.forEach { block ->
@@ -28,6 +27,10 @@ class MultiMap {
 
             maps.add(PartMap(map, x, y))
         }
+
+        delay({
+            callback?.accept(this)
+        }, 10)
 
         return this
     }
