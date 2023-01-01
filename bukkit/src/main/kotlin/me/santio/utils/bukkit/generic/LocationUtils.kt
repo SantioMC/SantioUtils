@@ -64,14 +64,18 @@ fun Pair<Location, Location>.locations(): List<Location> {
 
 infix fun Pair<Location, Location>.blocks(world: World?): List<Block> {
     return this.locations().map { loc ->
-        (loc.world ?: Bukkit.getWorlds()[0]).getBlockAt(loc)
+        (world ?: Bukkit.getWorlds()[0]).getBlockAt(loc)
     }.toList()
 }
 
 fun Block.frame(): ItemFrame? {
+    return this.frames().firstOrNull()
+}
+
+fun Block.frames(): List<ItemFrame> {
     return this.world
         .getNearbyEntities(this.location, 1.0, 1.0, 1.0) {
             it is ItemFrame && it.block() == this
         }
-        .firstOrNull() as ItemFrame?
+        .map { it as ItemFrame }
 }
