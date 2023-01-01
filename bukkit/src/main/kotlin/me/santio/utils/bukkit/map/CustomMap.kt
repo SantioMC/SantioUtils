@@ -15,7 +15,7 @@ class CustomMap {
     init {
         map = Bukkit.getMap(id) ?: Bukkit.createMap(Bukkit.getWorlds()[0])
         map.renderers.clear()
-        map.renderers.add(renderer)
+        map.addRenderer(renderer)
     }
 
     fun item() = CustomItem.map(map)
