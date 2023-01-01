@@ -59,11 +59,17 @@ fun Pair<Location, Location>.locations(): List<Location> {
         }
     }
 
-    return locs.sortedWith(compareBy({ it.y }, { it.x }, { it.z }))
+    return locs
 }
 
-infix fun Pair<Location, Location>.blocks(world: World?): List<Block> {
+fun Pair<Location, Location>.blocks(world: World?): List<Block> {
     return this.locations().map { loc ->
+        (world ?: Bukkit.getWorlds()[0]).getBlockAt(loc)
+    }.toList()
+}
+
+fun List<Location>.blocks(world: World?): List<Block> {
+    return this.map { loc ->
         (world ?: Bukkit.getWorlds()[0]).getBlockAt(loc)
     }.toList()
 }

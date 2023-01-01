@@ -14,9 +14,17 @@ class MultiMap {
 
     @JvmOverloads
     fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace, callback: Consumer<MultiMap>? = null): MultiMap {
-        val blocks = topLeft to bottomRight blocks topLeft.world
+        val locations = (topLeft to bottomRight).locations()
 
-        blocks.forEach { block ->
+        when(direction) {
+            BlockFace.NORTH -> locations.sortedWith(compareBy({ -it.y }, { -it.x }, { it.z }))
+            BlockFace.SOUTH -> locations.sortedWith(compareBy({ -it.y }, { it.x }, { it.z }))
+            BlockFace.EAST -> locations.sortedWith(compareBy({ -it.y }, { it.z }, { it.x }))
+            BlockFace.WEST -> locations.sortedWith(compareBy({ -it.y }, { -it.z }, { it.x }))
+            else -> {/* do nothing */}
+        }
+
+        locations.blocks(topLeft.world).forEach { block ->
             val x = if (direction == BlockFace.NORTH || direction == BlockFace.SOUTH) abs(block.x - topLeft.x) .toInt()
             else abs(block.z - topLeft.z).toInt()
             val y = abs(block.y - topLeft.y).toInt()
@@ -30,7 +38,7 @@ class MultiMap {
 
         delay({
             callback?.accept(this)
-        }, 10)
+        }, 20)
 
         return this
     }
