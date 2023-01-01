@@ -59,19 +59,20 @@ class MultiMap {
         return Pixel(map.map, pixelX to pixelY)
     }
 
-    fun sphere(center: Pixel, radius: Int): List<Pixel> {
+    fun sphere(x: Int, y: Int, radius: Int): List<Pixel> {
         val pixels: MutableList<Pixel> = mutableListOf()
 
-        for (x in -radius..radius) {
-            for (y in -radius..radius) {
-                for (z in -radius..radius) {
-                    if (x * x + y * y + z * z <= radius * radius) {
-                        val pixel = getPixel(center.coordinates.first + x, center.coordinates.second + y) ?: continue
-                        pixels.add(pixel)
-                    }
+        for (i in 0..radius) {
+            for (j in 0..radius) {
+                if (i * i + j * j <= radius * radius) {
+                    pixels.add(getPixel(x + i, y + j)!!)
+                    pixels.add(getPixel(x + i, y - j)!!)
+                    pixels.add(getPixel(x - i, y + j)!!)
+                    pixels.add(getPixel(x - i, y - j)!!)
                 }
             }
         }
+
         return pixels
     }
 
@@ -93,7 +94,7 @@ class MultiMap {
 
         for ((index, part) in maps.withIndex()) {
             part.map.renderer.border(MapUtils.randomColor())
-            part.map.renderer.centerText("$index")
+            part.map.renderer.centerText("$index\n${part.x}:${part.y}")
         }
 
         return this
