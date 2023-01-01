@@ -34,21 +34,29 @@ fun Location.horizontalDistance(location: Location): Double {
     return (distX * distX) + (distZ * distZ)
 }
 
+fun Pair<Location, Location>.min(): Location {
+    val minX = this.first.x.coerceAtMost(this.second.x)
+    val minY = this.first.y.coerceAtMost(this.second.y)
+    val minZ = this.first.z.coerceAtMost(this.second.z)
+    return Location(this.first.world, minX, minY, minZ)
+}
+
+fun Pair<Location, Location>.max(): Location {
+    val maxX = this.first.x.coerceAtLeast(this.second.x)
+    val maxY = this.first.y.coerceAtLeast(this.second.y)
+    val maxZ = this.first.z.coerceAtLeast(this.second.z)
+    return Location(this.first.world, maxX, maxY, maxZ)
+}
+
 fun Pair<Location, Location>.locations(): List<Location> {
     val locs: MutableList<Location> = mutableListOf()
 
-    var y = this.first.y
-    while (y != this.second.y) {
-        var x = this.first.x
-        while (x != this.second.x) {
-            var z = this.first.z
-            while (z != this.second.z) {
-                locs += Location(this.first.world, x, y, z)
-                z += if (this.first.z < this.second.z) 1.0 else -1.0
+    for (x in this.min().blockX..this.max().blockX) {
+        for (y in this.min().blockY..this.max().blockY) {
+            for (z in this.min().blockZ..this.max().blockZ) {
+                locs.add(Location(this.first.world, x.toDouble(), y.toDouble(), z.toDouble()))
             }
-            x += if (this.first.x < this.second.x) 1.0 else -1.0
         }
-        y += if (this.first.y < this.second.y) 1.0 else -1.0
     }
 
     return locs.sortedWith(compareBy({ it.y }, { it.x }, { it.z }))
