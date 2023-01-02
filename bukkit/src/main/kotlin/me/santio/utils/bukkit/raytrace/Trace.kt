@@ -16,7 +16,7 @@ class Trace(
 
     private var filter: Predicate<VectorData> = Predicate { false }
     private var maxDistance: Double = 20.0
-    private var step: Double = 1.0 / 3.0
+    private var step: Double = 1.0 / 4.0
 
     fun filter(filter: Predicate<VectorData>): Trace {
         this.filter = filter
@@ -63,7 +63,7 @@ class Trace(
                         future.complete(data)
                         return@async
                     } else {
-                        step = 1.0 / 20.0
+                        step = 1.0 / 30.0
                         closeup = true
                         loc.add(direction.clone().multiply(-1))
                     }
