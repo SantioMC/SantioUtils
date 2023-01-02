@@ -4,13 +4,17 @@ import me.santio.utils.bukkit.generic.*
 import org.bukkit.Location
 import org.bukkit.block.BlockFace
 import org.bukkit.entity.GlowItemFrame
+import java.awt.Image
+import java.awt.image.BufferedImage
+import java.net.URL
 import java.util.function.Consumer
+import javax.imageio.ImageIO
 import kotlin.math.abs
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 class MultiMap {
 
-    val maps = mutableListOf<PartMap>()
+    private val maps = mutableListOf<PartMap>()
 
     @JvmOverloads
     fun generate(topLeft: Location, bottomRight: Location, direction: BlockFace, callback: Consumer<MultiMap>? = null): MultiMap {
@@ -99,6 +103,42 @@ class MultiMap {
         for ((index, part) in maps.withIndex()) {
             part.map.renderer.border(MapUtils.randomColor())
             part.map.renderer.centerText("$index\n${part.x}:${part.y}")
+        }
+
+        return this
+    }
+
+    fun image(image: Image): MultiMap {
+        val maps = maps() ?: return this
+
+        // Scale the image to fit the size of the map
+        val scaledWidth = (maps.maxBy { it.x }.x + 1) * 128
+        val scaledHeight = (maps.maxBy { it.y }.y + 1) * 128
+        val scaledImage = image.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH)
+
+        // Split the image into 128x128 parts
+        for (part in maps) {
+            val img = BufferedImage(128, 128, BufferedImage.TYPE_INT_ARGB)
+            val graphics = img.graphics
+graphics.drawImage(scaledImage, 0, 0, 128, 128, part.x * 128, part.y * 128, (part.x + 1) * 128, (part.y + 1) * 128, null)
+            graphics.dispose()
+            part.map.renderer.image(img)
+        }
+
+        for ((index, part) in maps.withIndex()) {
+            part.map.renderer.border(MapUtils.randomColor())
+            part.map.renderer.centerText("$index\n${part.x}:${part.y}")
+        }
+
+        return this
+    }
+
+    fun image(url: URL): MultiMap {
+
+        async {
+            val req = url.openConnection()
+            val image = req.getInputStream().use { ImageIO.read(it) }
+            image(image)
         }
 
         return this

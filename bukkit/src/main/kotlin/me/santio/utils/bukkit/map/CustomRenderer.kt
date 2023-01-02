@@ -74,7 +74,7 @@ class CustomRenderer : MapRenderer() {
         rect(0, 0, maxX, maxZ, color)
     }
 
-    fun setImage(image: Image) {
+    fun image(image: Image) {
         canvas?.drawImage(0, 0, image)
     }
 
