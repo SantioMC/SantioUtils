@@ -125,11 +125,6 @@ graphics.drawImage(scaledImage, 0, 0, 128, 128, part.x * 128, part.y * 128, (par
             part.map.renderer.image(img)
         }
 
-        for ((index, part) in maps.withIndex()) {
-            part.map.renderer.border(MapUtils.randomColor())
-            part.map.renderer.centerText("$index\n${part.x}:${part.y}")
-        }
-
         return this
     }
 
