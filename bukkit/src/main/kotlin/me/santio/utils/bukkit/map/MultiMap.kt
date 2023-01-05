@@ -129,11 +129,58 @@ graphics.drawImage(scaledImage, 0, 0, 128, 128, part.x * 128, part.y * 128, (par
     }
 
     fun image(url: URL): MultiMap {
-
         async {
             val req = url.openConnection()
             val image = req.getInputStream().use { ImageIO.read(it) }
             image(image)
+        }
+
+        return this
+    }
+
+    fun fill(color: Byte): MultiMap {
+        val maps = maps() ?: return this
+
+        for (part in maps) {
+            part.map.renderer.fill(color)
+        }
+
+        return this
+    }
+
+    fun section(side: CustomMap.Side): List<PartMap> {
+        val maps = maps() ?: return emptyList()
+
+        return when(side) {
+            CustomMap.Side.TOP -> maps.filter { it.y == 0 }
+            CustomMap.Side.BOTTOM -> maps.filter { it.y == maps.maxBy { m -> m.y }.y }
+            CustomMap.Side.LEFT -> maps.filter { it.x == 0 }
+            CustomMap.Side.RIGHT -> maps.filter { it.x == maps.maxBy { m -> m.x }.x }
+        }
+    }
+
+    fun side(side: CustomMap.Side, color: Byte, width: Int = 1): MultiMap {
+        for (part in section(side)) {
+            part.map.renderer.side(side, color, width)
+        }
+
+        return this
+    }
+
+    @JvmOverloads
+    fun border(color: Byte, width: Int = 1): MultiMap {
+        CustomMap.Side.values().forEach { side ->
+            side(side, color, width)
+        }
+
+        return this
+    }
+
+    fun clear(): MultiMap {
+        val maps = maps() ?: return this
+
+        for (part in maps) {
+            part.map.renderer.clear()
         }
 
         return this

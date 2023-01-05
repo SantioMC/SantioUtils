@@ -41,10 +41,20 @@ class CustomRenderer : MapRenderer() {
         rect((pixelX - 1) * size, (pixelZ - 1) * size, pixelX * size, pixelZ * size, color)
     }
 
+    @JvmOverloads
+    fun side(side: CustomMap.Side, color: Byte, width: Int = 1) {
+        when (side) {
+            CustomMap.Side.TOP -> rect(0, 0, maxX, width, color)
+            CustomMap.Side.BOTTOM -> rect(0, maxZ - width, maxX, maxZ, color)
+            CustomMap.Side.LEFT -> rect(0, 0, width, maxZ, color)
+            CustomMap.Side.RIGHT -> rect(maxX - width, 0, maxX, maxZ, color)
+        }
+    }
+
     @Suppress("DEPRECATION")
-    fun border(color: Byte) {
-        rect(0, 0, maxX, maxZ, color)
-        rect(1, 1, maxX - 1, maxZ - 1, MapPalette.WHITE)
+    @JvmOverloads
+    fun border(color: Byte, width: Int = 1) {
+        CustomMap.Side.values().forEach { side(it, color, width) }
     }
 
     @Suppress("DEPRECATION")

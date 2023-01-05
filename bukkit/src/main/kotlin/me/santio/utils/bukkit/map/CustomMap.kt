@@ -22,4 +22,8 @@ class CustomMap {
     fun id() = id
     fun view() = map
 
+    enum class Side {
+        TOP, BOTTOM, LEFT, RIGHT
+    }
+
 }
