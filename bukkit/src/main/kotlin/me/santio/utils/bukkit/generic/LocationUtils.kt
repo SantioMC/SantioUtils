@@ -79,9 +79,7 @@ fun Block.frame(): ItemFrame? {
 }
 
 fun Block.frames(): List<ItemFrame> {
-    return this.world
-        .getNearbyEntities(this.location, 1.5, 1.5, 1.5) {
-            it is ItemFrame && it.block() == this
-        }
-        .map { it as ItemFrame }
+    return this.location.getAsyncEntities().filterIsInstance<ItemFrame>()
+        .filter { frame -> frame.location.distanceSquared(this.location) <= 1.5 * 1.5 }
+        .filter { it.block() == this }
 }
