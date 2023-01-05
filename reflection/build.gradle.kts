@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
+    implementation("org.reflections:reflections:0.10.2")
 }
 
 application {
