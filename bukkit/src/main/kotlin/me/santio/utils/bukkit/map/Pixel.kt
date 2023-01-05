@@ -1,14 +1,14 @@
 package me.santio.utils.bukkit.map
 
 data class Pixel(
-    val map: CustomMap,
-    val coordinates: Pair<Int, Int>
-) {
+    val customMap: CustomMap,
+    override val coordinates: Pair<Int, Int>
+): RawPixel(customMap.view(), coordinates) {
 
     fun set(color: Byte) {
-        map.renderer.setPixel(1, coordinates.first, coordinates.second, color)
+        customMap.renderer.setPixel(1, coordinates.first, coordinates.second, color)
     }
 
-    fun get(): Byte? = map.renderer.canvas?.getPixel(coordinates.first, coordinates.second)
+    fun get(): Byte? = customMap.renderer.canvas?.getPixel(coordinates.first, coordinates.second)
 
 }

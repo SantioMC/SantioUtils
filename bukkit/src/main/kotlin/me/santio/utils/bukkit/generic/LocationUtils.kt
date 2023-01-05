@@ -80,7 +80,7 @@ fun Block.frame(): ItemFrame? {
 
 fun Block.frames(): List<ItemFrame> {
     return this.world
-        .getNearbyEntities(this.location, 1.0, 1.0, 1.0) {
+        .getNearbyEntities(this.location, 1.5, 1.5, 1.5) {
             it is ItemFrame && it.block() == this
         }
         .map { it as ItemFrame }

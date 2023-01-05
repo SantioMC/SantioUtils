@@ -19,5 +19,7 @@ class CustomMap {
     }
 
     fun item() = CustomItem.map(map)
+    fun id() = id
+    fun view() = map
 
 }
