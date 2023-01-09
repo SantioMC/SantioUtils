@@ -3,11 +3,10 @@
 
 package me.santio.utils.bukkit.generic
 
-import org.bukkit.Bukkit
-import org.bukkit.Chunk
-import org.bukkit.Location
-import org.bukkit.World
+import org.bukkit.*
 import org.bukkit.block.Block
+import org.bukkit.block.Chest
+import org.bukkit.block.DoubleChest
 import org.bukkit.entity.Entity
 import org.bukkit.entity.ItemFrame
 import java.util.function.Predicate
@@ -82,4 +81,12 @@ fun Block.frames(): List<ItemFrame> {
     return this.location.getAsyncEntities().filterIsInstance<ItemFrame>()
         .filter { frame -> frame.location.distanceSquared(this.location) <= 1.5 * 1.5 }
         .filter { it.block() == this }
+}
+
+fun Block.isDoubleChest(): Boolean {
+    return this.type == Material.CHEST && (this.state as Chest).inventory.holder is DoubleChest
+}
+
+fun Block.getDoubleChest(): DoubleChest {
+    return (this.state as Chest).inventory.holder as DoubleChest
 }
