@@ -27,6 +27,7 @@ object CommandHandler {
      * Note: A new instance of the class will be created internally.
      * @param command The class instance to register.
      */
+    @JvmStatic
     fun registerCommand(command: Any) {
         load()
         registerBukkitCommand(
@@ -38,6 +39,7 @@ object CommandHandler {
      * Registers a class as a command.
      * @param command The class to register.
      */
+    @JvmStatic
     fun registerCommand(command: Class<*>) {
         load()
         registerBukkitCommand(
@@ -49,6 +51,7 @@ object CommandHandler {
      * Scans a package for commands and registers them.
      * @param packageName The package name to scan.
      */
+    @JvmStatic
     fun registerPackage(packageName: String) {
         load()
         ClassGraph()
@@ -68,6 +71,7 @@ object CommandHandler {
      * @param command The command to execute.
      * @param message The message to execute.
      */
+    @JvmStatic
     fun execute(sender: CommandSender, command: String, message: String) {
         val query = "$command $message"
         val cmd = CommandParser.findCommand(query)
@@ -107,6 +111,7 @@ object CommandHandler {
      * Gets the bukkit command map.
      * @return The bukkit command map.
      */
+    @JvmStatic
     fun getCommandMap(): CommandMap {
         val server = Bukkit.getServer()
         val serverClass = server.javaClass
@@ -117,6 +122,7 @@ object CommandHandler {
      * Gets the command label.
      * @return The command label.
      */
+    @JvmStatic
     fun label(): String {
         return label
     }
@@ -125,6 +131,7 @@ object CommandHandler {
      * Sets the command label. This only works before the commands are registered.
      * @param label The new command label.
      */
+    @JvmStatic
     fun label(label: String) {
         this.label = label
     }
