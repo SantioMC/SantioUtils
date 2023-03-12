@@ -1,8 +1,6 @@
 package me.santio.utils.bukkit
 
-import me.santio.utils.bukkit.command.CommandHandler
 import me.santio.utils.bukkit.features.BukkitFeature
-import me.santio.utils.reflection.reflection
 import org.bukkit.plugin.java.JavaPlugin
 
 /**
@@ -41,15 +39,6 @@ abstract class AttachedJavaPlugin: JavaPlugin() {
             it.enable(this)
             BukkitUtils.featuresEnabled.add(it)
         }
-    }
-
-    /**
-     * Loads all commands in the package that this class is in.
-     * Example: If this class is in the package "me.santio.test.bukkit", all commands in the package "me.santio.test.bukkit" (and childrens of) will be loaded.
-     */
-    @JvmOverloads
-    fun loadCommands(pkg: Package = this::class.java.`package`) {
-        CommandHandler.loadAllCommands(pkg.reflection())
     }
 
 }

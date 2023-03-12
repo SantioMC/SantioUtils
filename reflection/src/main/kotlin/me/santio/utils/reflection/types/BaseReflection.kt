@@ -7,9 +7,7 @@ import java.lang.reflect.TypeVariable
 @Suppress("MemberVisibilityCanBePrivate")
 abstract class BaseReflection<T : Any>(private val obj: T) {
 
-    fun get(): T {
-        return obj
-    }
+    abstract fun get(): Any
 
     fun clazz(): ClassReflection<T> {
         return ClassReflection(obj)

@@ -1,24 +1,24 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.7.10"
-
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 }
 
-group = "me.santio.utils.reflection"
+group = "me.santio.utils.command"
 version = "1.0"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
 }
 
 dependencies {
-    implementation(project(":common"))
-    implementation("org.reflections:reflections:0.10.2")
+    compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
+    implementation(project(":reflection"))
     implementation(kotlin("reflect"))
 }
 
 application {
-    mainClass.set("me.santio.utils.reflection.ReflectionUtils")
+    mainClass.set("me.santio.utils.command.CommandHandler")
 }

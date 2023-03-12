@@ -6,19 +6,21 @@ plugins {
     application
 }
 
-group = "me.santio.utils.reflection"
+group = "me.santio.utils.nms"
 version = "1.0"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
 }
 
 dependencies {
     implementation(project(":common"))
-    implementation("org.reflections:reflections:0.10.2")
-    implementation(kotlin("reflect"))
+    implementation(project(":reflection"))
+
+    compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
 }
 
 application {
-    mainClass.set("me.santio.utils.reflection.ReflectionUtils")
+    mainClass.set("me.santio.utils.nms.NMSUtils")
 }

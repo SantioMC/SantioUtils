@@ -1,12 +1,10 @@
 package me.santio.utils.apis
 
-import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.type.TypeFactory
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import kong.unirest.HttpResponse
 import kong.unirest.JsonNode
 import me.santio.utils.apis.spiget.SpigetAPI
-import me.santio.utils.apis.spiget.types.SpigetType
 
 object APIUtils {
 

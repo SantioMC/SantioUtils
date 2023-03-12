@@ -6,7 +6,7 @@ plugins {
     application
 }
 
-group = "me.santio.utils.reflection"
+group = "me.santio.utils.database"
 version = "1.0"
 
 repositories {
@@ -15,10 +15,12 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
-    implementation("org.reflections:reflections:0.10.2")
-    implementation(kotlin("reflect"))
+
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.litote.kmongo:kmongo:4.8.0")
 }
 
 application {
-    mainClass.set("me.santio.utils.reflection.ReflectionUtils")
+    mainClass.set("me.santio.utils.apis.APIUtils")
 }

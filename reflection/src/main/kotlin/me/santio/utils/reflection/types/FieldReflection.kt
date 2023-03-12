@@ -6,6 +6,11 @@ import java.lang.reflect.Field
 class FieldReflection(private val obj: Any, private val field: Field) : BaseReflection<Field>(field) {
 
     fun name(): String = field.name
+    fun type(): Class<*> = field.type
+
+    override fun get(): Field {
+        return field
+    }
 
     @JvmOverloads
     fun value(obj: Any = this.obj): Any? {

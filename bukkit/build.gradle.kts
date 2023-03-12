@@ -15,10 +15,12 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
+    implementation("io.github.classgraph:classgraph:4.8.157")
 
     implementation(project(":common"))
     implementation(project(":minecraft"))
     implementation(project(":reflection"))
+    implementation(project(":command"))
 }
 
 application {
