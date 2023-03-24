@@ -380,7 +380,7 @@ object CommandParser {
             if (!automaticParameters[index].isValid(argument.type))
                 throw CommandExecutionException("There is no registered automatic parameter for parameter ${argument.name} (type ${argument.type})")
 
-            if (parameter.clazz != argument.type)
+            if (argument.type.isAssignableFrom(parameter.clazz))
                 throw CommandExecutionException("Automatic parameter (index $index) is not valid for parameter ${argument.name} (type ${argument.type})")
 
             args.add(parameter.value)
