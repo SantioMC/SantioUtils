@@ -153,7 +153,6 @@ object CommandHandler {
         ) {
             override fun execute(sender: CommandSender, label: String, args: Array<out String>): Boolean {
 
-                sender.sendMessage("Step 1: $label")
                 execute(sender, command.name, args.joinToString(" "))
                 return true
 
