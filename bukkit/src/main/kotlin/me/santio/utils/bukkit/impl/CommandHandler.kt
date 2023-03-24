@@ -87,6 +87,7 @@ object CommandHandler {
         sender.sendMessage("Step 2: Satisfy automatic parameters")
         val senderType = autoParams.firstOrNull() ?: return
         sender.sendMessage("Step 2.1: Check if the sender is valid")
+        sender.sendMessage("Class of sender: ${sender::class.java} (name: ${sender::class.java.name}, kotlin: ${sender::class.simpleName})")
         if (!autoParam.isValid(sender::class.java)) return
         sender.sendMessage("Step 2.2: Satisfy the sender")
 
