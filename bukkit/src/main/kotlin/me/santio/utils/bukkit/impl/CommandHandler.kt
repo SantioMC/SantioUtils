@@ -84,12 +84,8 @@ object CommandHandler {
         val autoParams = CommandParser.getAutomaticParameters(cmd)
 
         // Satisfy automatic parameters
-        sender.sendMessage("Step 2: Satisfy automatic parameters")
         val senderType = autoParams.firstOrNull() ?: return
-        sender.sendMessage("Step 2.1: Check if the sender is valid")
-        sender.sendMessage("Class of sender: ${sender::class.java} (name: ${sender::class.java.name}, kotlin: ${sender::class.simpleName})")
         if (!autoParam.isValid(sender::class.java)) return
-        sender.sendMessage("Step 2.2: Satisfy the sender")
 
         val satisfy = when (senderType) {
             Player::class.java -> (sender as? Player)?.let { autoParam.satisfy(it) }
@@ -169,9 +165,7 @@ object CommandHandler {
 
     private class SenderParameter: AutomaticParameter() {
         override fun isValid(argument: Class<*>): Boolean {
-            return argument == CommandSender::class.java
-                || argument == Player::class.java
-                || argument == ConsoleCommandSender::class.java
+            return argument.simpleName.endsWith("Player") || argument.simpleName.endsWith("CommandSender")
         }
     }
 
